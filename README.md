@@ -1,1 +1,6 @@
-# java-lotto-precourse
+![1](3.로또_page-0001.jpg)
+![2](3.로또_page-0002.jpg)
+![3](3.로또_page-0003.jpg)
+![4](3.로또_page-0004.jpg)
+![5](3.로또_page-0005.jpg)
+![6](3.로또_page-0006.jpg)
