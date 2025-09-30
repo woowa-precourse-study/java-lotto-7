@@ -1,6 +1,8 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.view.InputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -56,13 +58,13 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("Controller 입력 테스트")
-    void 컨트롤러_입력_테스트(){
-        InputController inputController = new InputController();
-        assertThat(1000).isEqualTo(inputController.getPrice(1000));
-        assertThat("1,2,3,4,5,6").isEqualTo(inputController.getTargetNumbers(1,2,3,4,5,6));
-        assertThat(7).isEqualTo(inputController.getBonusNumber(7));
-
+    @DisplayName("입력 테스트")
+    void 입력_테스트(){
+        InputView inputView = new InputView();
+        run("1000","1,2,3,4,5,6", "7");
+        assertThat(output()).isEqualTo(inputView.getPrice());
+        assertThat(output()).isEqualTo(inputView.getTargetNumbers();
+        assertThat(output()).isEqualTo(inputView.getBonusNumber());
     }
 
     @Override
