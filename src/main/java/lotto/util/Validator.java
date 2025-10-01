@@ -3,7 +3,6 @@ package lotto.util;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import lotto.view.InputView;
 
 public class Validator {
 

@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.domain.Lotto;
 import lotto.view.InputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,7 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -65,6 +66,12 @@ class ApplicationTest extends NsTest {
         assertThat(output()).isEqualTo(inputView.getPrice());
         assertThat(output()).isEqualTo(inputView.getTargetNumbers());
         assertThat(output()).isEqualTo(inputView.getBonusNumber());
+    }
+
+    @Test
+    void 로또_체크_테스트(){
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        assertThat(6).isEqualTo(lotto.checkLotto(List.of(1,2,3,4,5,6)));
     }
 
     @Override
