@@ -3,22 +3,22 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
-import lotto.domain.RequestDTO;
+import lotto.dto.RequestDTO;
 import lotto.util.Message;
 import lotto.util.Validator;
 
 public class InputView {
 
-    public int getPrice() {
-        System.out.println(Message.REQUIRE_INPUT_PRICE);
+    private static int getPrice() {
+        System.out.println(Message.REQUIRE_INPUT_PRICE.getMessage());
         int price = Integer.parseInt(Console.readLine().strip());
         Validator.priceRange(price);
         Validator.priceUnit(price);
         return price;
     }
 
-    public List<Integer> getTargetNumbers() {
-        System.out.println(Message.REQUIRE_INPUT_TARGET_NUMBERS);
+    private static List<Integer> getTargetNumbers() {
+        System.out.println(Message.REQUIRE_INPUT_TARGET_NUMBERS.getMessage());
         List<Integer> targetNumber = Arrays.stream(Console.readLine()
                         .strip()
                         .split(","))
@@ -29,17 +29,14 @@ public class InputView {
         return targetNumber;
     }
 
-    public int getBonusNumber() {
-        System.out.println(Message.REQUIRE_INPUT_BONUS_NUMBER);
+    private static int getBonusNumber() {
+        System.out.println(Message.REQUIRE_INPUT_BONUS_NUMBER.getMessage());
         int bonusNumber = Integer.parseInt(Console.readLine().strip());
         Validator.numberRange(bonusNumber);
         return bonusNumber;
     }
 
-    public RequestDTO getInput() {
-        int price = getPrice();
-        List<Integer> targetNumbers = getTargetNumbers();
-        int bonusNumber = getBonusNumber();
-        return new RequestDTO(price, targetNumbers, bonusNumber);
+    public static RequestDTO getInput() {
+        return new RequestDTO(getPrice());
     }
 }

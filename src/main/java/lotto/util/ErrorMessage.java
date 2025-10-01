@@ -8,7 +8,12 @@ public enum ErrorMessage {
     ERROR_INPUT_NUMBER_DUPLICATE("[ERROR] 로또 번호는 중복될 수 없습니다.");
 
     private String message;
+
     ErrorMessage(String message) {
         this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

@@ -9,20 +9,21 @@ public class Validator {
     public static void priceRange(int price) {
         if (price < 1000 || price > 100000) {
             throw new IllegalArgumentException(
-                    String.valueOf(ErrorMessage.ERROR_INPUT_PRICE_RANGE));
+                    ErrorMessage.ERROR_INPUT_PRICE_RANGE.getMessage());
         }
     }
 
     public static void priceUnit(int price) {
         if (price % 1000 != 0) {
-            throw new IllegalArgumentException(String.valueOf(ErrorMessage.ERROR_INPUT_PRICE_UNIT));
+            throw new IllegalArgumentException(
+                    ErrorMessage.ERROR_INPUT_PRICE_UNIT.getMessage());
         }
     }
 
     public static void numberRange(int number) {
         if (number < 1 || number > 45) {
             throw new IllegalArgumentException(
-                    String.valueOf(ErrorMessage.ERROR_INPUT_NUMBER_RANGE));
+                    ErrorMessage.ERROR_INPUT_NUMBER_RANGE.getMessage());
         }
     }
 
@@ -36,7 +37,7 @@ public class Validator {
         Set<Integer> unique = new HashSet<>(numbers);
         if (unique.size() != numbers.size()) {
             throw new IllegalArgumentException(
-                    String.valueOf(ErrorMessage.ERROR_INPUT_NUMBER_DUPLICATE));
+                    ErrorMessage.ERROR_INPUT_NUMBER_DUPLICATE.getMessage());
         }
     }
 
