@@ -14,6 +14,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.*;
 
 class ApplicationTest extends NsTest {
+
     private static final String ERROR_MESSAGE = "[ERROR]";
 
     @Test
@@ -59,35 +60,42 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    @DisplayName("입력 테스트")
-    void 입력_테스트(){
-        InputView inputView = new InputView();
-        run("1000","1,2,3,4,5,6", "7");
-        assertThat(output()).isEqualTo(inputView.getPrice());
-        assertThat(output()).isEqualTo(inputView.getTargetNumbers());
-        assertThat(output()).isEqualTo(inputView.getBonusNumber());
+    void 로또_체크_테스트() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(6).isEqualTo(lotto.checkLotto(List.of(1, 2, 3, 4, 5, 6)));
     }
 
     @Test
-    void 로또_체크_테스트(){
-        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
-        assertThat(6).isEqualTo(lotto.checkLotto(List.of(1,2,3,4,5,6)));
+    void 로또_체크_테스트2() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(4).isEqualTo(lotto.checkLotto(List.of(1, 2, 12, 4, 5, 7)));
     }
+
     @Test
-    void 로또_체크_테스트2(){
-        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
-        assertThat(4).isEqualTo(lotto.checkLotto(List.of(1,2,12,4,5,7)));
+    void 로또_체크_테스트3() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(2).isEqualTo(lotto.checkLotto(List.of(24, 33, 12, 4, 5, 17)));
     }
+
     @Test
-    void 로또_체크_테스트3(){
-        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
-        assertThat(2).isEqualTo(lotto.checkLotto(List.of(24,33,12,4,5,17)));
+    void 로또_체크_테스트4() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(0).isEqualTo(lotto.checkLotto(List.of(24, 33, 12, 34, 25, 17)));
     }
+
     @Test
-    void 로또_체크_테스트4(){
-        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
-        assertThat(0).isEqualTo(lotto.checkLotto(List.of(24,33,12,34,25,17)));
+    void 로또_리스트_체크_테스트1() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<List<Integer>> inputLottos = List.of(
+                List.of(1,22,33,44,15,16),
+                List.of(1,2,33,44,15,16),
+                List.of(1,2,3,44,15,16),
+                List.of(1,2,3,4,5,16),
+                List.of(1,2,3,4,5,6)
+        );
+        assertThat(List.of(1, 2, 3, 4, 5, 6)).isEqualTo(inputLottos);
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
