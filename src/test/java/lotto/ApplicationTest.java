@@ -90,6 +90,7 @@ class ApplicationTest extends NsTest {
                 List.of(1,22,33,44,15,16),
                 List.of(1,2,33,44,15,16),
                 List.of(1,2,3,44,15,16),
+                List.of(1,2,3,4,15,16),
                 List.of(1,2,3,4,5,16),
                 List.of(1,2,3,4,5,6)
         );

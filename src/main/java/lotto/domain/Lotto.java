@@ -36,7 +36,11 @@ public class Lotto {
 
     // 만들어진 난수 정답과 일치하는지 확인
     public List<Integer> checkLottos(List<List<Integer>> lottos) {
-
+        List<Integer> matchingNumbers = new ArrayList<>();
+        for (List<Integer> numbers : lottos) {
+            matchingNumbers.add(checkLotto(numbers));
+        }
+        return matchingNumbers;
     }
 
     public int checkLotto(List<Integer> lotto){
