@@ -63,7 +63,7 @@ class ApplicationTest extends NsTest {
         InputView inputView = new InputView();
         run("1000","1,2,3,4,5,6", "7");
         assertThat(output()).isEqualTo(inputView.getPrice());
-        assertThat(output()).isEqualTo(inputView.getTargetNumbers();
+        assertThat(output()).isEqualTo(inputView.getTargetNumbers());
         assertThat(output()).isEqualTo(inputView.getBonusNumber());
     }
 

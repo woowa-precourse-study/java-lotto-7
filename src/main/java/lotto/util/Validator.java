@@ -1,6 +1,8 @@
 package lotto.util;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import lotto.view.InputView;
 
 public class Validator {
@@ -31,5 +33,12 @@ public class Validator {
         }
     }
 
+    public static void numberDuplicate(List<Integer> numbers) {
+        Set<Integer> unique = new HashSet<>(numbers);
+        if (unique.size() != numbers.size()) {
+            throw new IllegalArgumentException(
+                    String.valueOf(ErrorMessage.ERROR_INPUT_NUMBER_DUPLICATE));
+        }
+    }
 
 }
