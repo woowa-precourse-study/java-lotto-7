@@ -73,7 +73,21 @@ class ApplicationTest extends NsTest {
         Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
         assertThat(6).isEqualTo(lotto.checkLotto(List.of(1,2,3,4,5,6)));
     }
-
+    @Test
+    void 로또_체크_테스트2(){
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        assertThat(4).isEqualTo(lotto.checkLotto(List.of(1,2,12,4,5,7)));
+    }
+    @Test
+    void 로또_체크_테스트3(){
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        assertThat(2).isEqualTo(lotto.checkLotto(List.of(24,33,12,4,5,17)));
+    }
+    @Test
+    void 로또_체크_테스트4(){
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        assertThat(0).isEqualTo(lotto.checkLotto(List.of(24,33,12,34,25,17)));
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
