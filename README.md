@@ -2,18 +2,16 @@
 
 ## Model
 ### domain.Lotto
-- [ ] 주어진 필드와 메서드 구현
-- [ ] 당첨번호를 받아서 몇개 일치하는지 반환하는 메서드 구현
+- [x] 주어진 필드와 메서드 구현
+- [x] 당첨번호를 받아서 몇개 일치하는지 반환하는 메서드 구현
+- [x] 당첨번호를 받아서 2등인지 반환하는 메서드 구현
 ### domain.LottoList
 - [ ] 로또 객체를 저장하는 리스트 저장
-### domain.LottoNumber
+- [ ] 
+### domain.WinningNumber
 - [ ] 당첨 번호 리스트로 저장
-- [ ] 1등 판별하는 메서드
-    - [ ] 1등이면 LottoResult에 결과 전달
-- [ ] 2등 판별하는 메서드
-- [ ] 3등 판별하는 메서드
-- [ ] 4등 판별하는 메서드
-- [ ] 5등 판별하는 메서드
+- [ ] 보너스 번호 저장
+  - 값이 당첨번호중 하나와 같을 경우 예외 발생
 ### domain.LottoResult
 - [ ] 등수별 개수 저장
 - [ ] WinningConstant를 객체로 사용해 등수별 일치해야 하는 개수와 당첨 금액 데이터 사용
@@ -70,11 +68,11 @@
     - [ ] 당첨 번호 6개 아닌 경우
     - [ ] 당첨 번호가 1~45의 정수가 아닌 경우
 - [ ] 당첨 번호 리스트 반환
-### random.RandomGenerator(Interface)
+### random.RandomGenerator
 - [ ] 로또 번호 발행하는 인터페이스 생성
-### random.RandomGeneratorImpl(class)
+### random.RandomGeneratorImpl
 - [ ] 로또 번호 발행하는 인터페이스 구현
-### error.ErrorMessage(enum)
+### error.ErrorMessage
 - [ ] 에러메시지 상수 보관
-### constant.WinningConstant
+### constant.Rank
 - [ ] 등수별 일치해야 하는 개수와 당첨 금액을 상수로 저장
