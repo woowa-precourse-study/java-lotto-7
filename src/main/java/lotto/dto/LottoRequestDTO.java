@@ -2,7 +2,7 @@ package lotto.dto;
 
 import java.util.List;
 
-public record RequestDTO(
+public record LottoRequestDTO(
         int price
 ) {
 

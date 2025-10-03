@@ -3,7 +3,8 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
-import lotto.dto.RequestDTO;
+import lotto.dto.LottoRequestDTO;
+import lotto.dto.ProfitRequestDTO;
 import lotto.util.Message;
 import lotto.util.Validator;
 
@@ -36,7 +37,11 @@ public class InputView {
         return bonusNumber;
     }
 
-    public static RequestDTO getInput() {
-        return new RequestDTO(getPrice());
+    public static LottoRequestDTO inputPrice() {
+        return new LottoRequestDTO(getPrice());
+    }
+
+    public static ProfitRequestDTO inputNumbers(){
+        return new ProfitRequestDTO(getTargetNumbers(),getBonusNumber());
     }
 }
