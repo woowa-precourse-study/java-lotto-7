@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.exception.Validator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,26 +12,39 @@ public class LottoController {
 
     // Controller 메인 함수
     public void doLotto(){
+        Boolean flag=false;
+        String input="";
 
-        outputMessage(Message.REQUEST_PRICE_TO_PAY);
-        Integer price=Integer.parseInt((inputMessage()));
+        while(!flag){
+            outputMessage(Message.REQUEST_PRICE_TO_PAY);
+            input=inputMessage();
+            flag=Validator.checkPrice(input);
+        }
+        Integer price=Integer.parseInt(input);
 
         Integer lottoCount=price/lottoPrice;
-
         outputMessage(String.format(Message.PRINT_THE_NUMBER_OF_LOTTO,lottoCount));
 
-        outputMessage(Message.REQUEST_TARGET_NUMBER);
+        flag=false;
+        while(!flag){
+            outputMessage(Message.REQUEST_TARGET_NUMBER);
+            input=inputMessage();
+            flag=Validator.checkLottoNumber(input);
+        }
 
-        List<Integer> TargetNumbers= Arrays.stream(inputMessage().split(","))
+        List<Integer> TargetNumbers= Arrays.stream(input.split(","))
                                     .map(Integer::parseInt)
                                     .collect(Collectors.toList());
-        System.out.println(TargetNumbers);
-        outputMessage(Message.REQUEST_BONUS_NUMBER);
-        Integer BonusNumber=Integer.parseInt((inputMessage()));
 
+        flag=false;
+        while(!flag){
+            outputMessage(Message.REQUEST_BONUS_NUMBER);
+            input=inputMessage();
+            flag=Validator.checkLottoNumber(input);
+        }
+        Integer BonusNumber=Integer.parseInt(input);
 
     }
-
 
     // 메세지 출력
     public void outputMessage(String message){
