@@ -19,7 +19,6 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(LOTTO_NUMBER_COUNT_ERROR.getMessage());
         }
-
         validateLottoNumberUnique(numbers);
     }
 
