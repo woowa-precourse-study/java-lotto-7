@@ -2,6 +2,7 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.exception.Validator;
+import lotto.service.LottoService;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,9 +10,8 @@ import java.util.stream.Collectors;
 
 public class LottoController {
     private final Integer lottoPrice=1000;  // 로또 금액
-
     // Controller 메인 함수
-    public void doLotto(){
+    public void doLotto(LottoService lottoService){
         Boolean flag=false;
         String input="";
 
@@ -25,6 +25,7 @@ public class LottoController {
         Integer lottoCount=price/lottoPrice;
         outputMessage(String.format(Message.PRINT_THE_NUMBER_OF_LOTTO,lottoCount));
 
+
         flag=false;
         while(!flag){
             outputMessage(Message.REQUEST_TARGET_NUMBER);
@@ -32,7 +33,7 @@ public class LottoController {
             flag=Validator.checkLottoNumber(input);
         }
 
-        List<Integer> TargetNumbers= Arrays.stream(input.split(","))
+        List<Integer> targetNumbers= Arrays.stream(input.split(","))
                                     .map(Integer::parseInt)
                                     .collect(Collectors.toList());
 
@@ -40,9 +41,14 @@ public class LottoController {
         while(!flag){
             outputMessage(Message.REQUEST_BONUS_NUMBER);
             input=inputMessage();
-            flag=Validator.checkLottoNumber(input);
+            flag=Validator.checkBonusNumber(input);
         }
-        Integer BonusNumber=Integer.parseInt(input);
+        Integer bonusNumber=Integer.parseInt(input);
+
+        lottoService.playLotto(lottoCount,targetNumbers,bonusNumber);
+
+        outputMessage(Message.LOTTO_RESULT);
+
 
     }
 
