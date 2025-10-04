@@ -1,6 +1,7 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.controller.Message;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.Record;
@@ -10,8 +11,7 @@ import java.util.List;
 
 public class LottoService {
 
-    public void playLotto(Integer lottoCount,List<Integer> targetNumbers,Integer bonusNumber){
-        Record record=new Record();
+    public void playLotto(Integer lottoCount,List<Integer> targetNumbers,Integer bonusNumber,Record record){
         String rank="";
         for(int i=0;i<lottoCount;i++){
             Integer count=0;
@@ -32,8 +32,6 @@ public class LottoService {
 
         }
 
-        System.out.println("수익률 계산");
-
     }
 
     // 랜덤 수
@@ -46,14 +44,11 @@ public class LottoService {
     private String getrank(Boolean flag,Integer count){
         String rank="RANK_";
         rank+=count;
-        if (count==5 || flag==false){
+        if (count==5 && flag==false){
             rank+="b";
         }
         return rank;
     }
-
-
-    // 수익률을 계산한다
 
 
 }

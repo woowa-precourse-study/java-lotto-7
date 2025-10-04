@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Record;
 import lotto.exception.Validator;
 import lotto.service.LottoService;
 
@@ -14,6 +15,7 @@ public class LottoController {
     public void doLotto(LottoService lottoService){
         Boolean flag=false;
         String input="";
+        lotto.domain.Record record=new Record();
 
         while(!flag){
             outputMessage(Message.REQUEST_PRICE_TO_PAY);
@@ -45,9 +47,13 @@ public class LottoController {
         }
         Integer bonusNumber=Integer.parseInt(input);
 
-        lottoService.playLotto(lottoCount,targetNumbers,bonusNumber);
+        lottoService.playLotto(lottoCount,targetNumbers,bonusNumber,record);
+        System.out.println(Message.LOTTO_RESULT);
+        record.printRecord();
+        String returnPercent=record.getReturnPercent(price);
+        System.out.println(String.format(Message.LOTTO_RESULT_TOTAL,returnPercent));
 
-        outputMessage(Message.LOTTO_RESULT);
+
 
 
     }
