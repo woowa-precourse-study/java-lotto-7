@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -53,6 +55,71 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
+    @Test
+    void 천단위_금액_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("1002");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+
+    @ParameterizedTest
+    @ValueSource(strings={"1,2,3","1,2,3,4,5,6,7"})
+    void 로또_번호_개수_예외_테스트(String numbers) {
+        assertSimpleTest(() -> {
+            runException("8000",numbers);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 로또_번호_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("8000","1,2,3,455,5,6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 로또_번호_중복_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("8000","1,2,3,5,5,6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 로또_번호_숫자아님_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("8000","1,2,3,5,5,6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 보너스_번호_범위밖_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("8000","1,2,3,4,5,6","455");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 보너스_번호_중복_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("8000","1,2,3,4,5,6","4");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 보너스_번호_숫자아님_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("8000","1,2,3,4,5,6","d");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
 
     @Override
     public void runMain() {
