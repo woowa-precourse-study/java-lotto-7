@@ -11,8 +11,13 @@ import java.util.stream.Collectors;
 
 public class LottoController {
     private final Integer lottoPrice=1000;  // 로또 금액
+    private final LottoService lottoService;
+
+    public LottoController(LottoService lottoService){
+        this.lottoService=lottoService;
+    }
     // Controller 메인 함수
-    public void doLotto(LottoService lottoService){
+    public void doLotto(){
         Boolean flag=false;
         String input="";
         lotto.domain.Record record=new Record();
