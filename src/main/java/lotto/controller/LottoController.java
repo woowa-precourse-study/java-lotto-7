@@ -1,7 +1,6 @@
 package lotto.controller;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoGroup;
+import lotto.domain.*;
 import lotto.service.LottoService;
 import lotto.utils.RandomGenerator;
 
@@ -24,12 +23,30 @@ public class LottoController {
         int input = doRetry(inputView::readMessage);
 
         int amount = input/1000;
-
         for(int i=0;i<amount;i++){
             lottoGroup.add(new Lotto(RandomGenerator.getRandomNumber()));
         }
-
         OutputView.printLotto(amount,lottoGroup.getLottoGroup());
+
+        Lotto lotto = new Lotto(doRetry(inputView::readLotto));
+        int bonus = doRetry(inputView::readBonus);
+
+        LottoPolicy lottoPolicy=new LottoPolicy(lotto,bonus);
+        Result result=Result.of();
+
+        for(Lotto userLotto:lottoGroup.getLottoGroup()){
+            int match=lottoPolicy.matchLotto(userLotto);
+            boolean b=lottoPolicy.isMatchBonus(bonus);
+            Status status=Status.fromMatch(match,b);
+            result.add(status);
+        }
+
+        OutputView.printMatch(result.getResult());
+
+
+
+
+
 
 
     }

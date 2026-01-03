@@ -2,8 +2,10 @@ package lotto.controller;
 
 
 import lotto.domain.Lotto;
+import lotto.domain.Status;
 
-import java.util.Collections;
+import java.text.DecimalFormat;
+import java.util.EnumMap;
 import java.util.List;
 
 public class OutputView {
@@ -13,6 +15,18 @@ public class OutputView {
             lotto.getNumbers().stream().sorted();
             System.out.println(String.join(", ", lotto.getNumbers().toString()));
         }
+    }
+
+    public static  void printMatch(EnumMap<Status,Integer> result){
+        for (Status status:result.keySet()){
+            if (status==Status.NONE){
+                continue;
+            }
+            DecimalFormat df = new DecimalFormat("###,###");
+            String money = df.format(status.getPrice());
+            System.out.printf("%s (%s원) - %d개\n",status.getMessage(),money,result.getOrDefault(status,0));
+        }
+
     }
 }
 

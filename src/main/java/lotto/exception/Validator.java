@@ -25,4 +25,14 @@ public interface Validator {
         }
     }
 
+    static void validateRange(String input) {
+        int min = 1;
+        int max = 45;
+        int value = validateIsNumber(input);
+        if (value < min || value > max) {
+            throw new IllegalArgumentException("[ERROR] 숫자는 1에서 45사이 숫자여야합니다.");
+        }
+    }
+
+
 }
