@@ -8,9 +8,6 @@ public enum Rank{
     RANK_6("6개 일치 (2,000,000,000원)",2000000000);
 
 
-
-
-
     private final String description;
     private final Integer amount;
     Rank(String description,Integer amount){
