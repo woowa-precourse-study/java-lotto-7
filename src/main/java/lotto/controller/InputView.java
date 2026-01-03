@@ -18,6 +18,10 @@ public class InputView {
         return Integer.parseInt(input);
     }
 
+//    public List<Integer> readLotto(){
+//
+//    }
+
     private String readInput(List<Validator> validators) {
         try{
             String input = Console.readLine().trim();
