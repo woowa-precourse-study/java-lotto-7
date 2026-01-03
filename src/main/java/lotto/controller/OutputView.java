@@ -26,7 +26,10 @@ public class OutputView {
             String money = df.format(status.getPrice());
             System.out.printf("%s (%s원) - %d개\n",status.getMessage(),money,result.getOrDefault(status,0));
         }
+    }
 
+    public static void printReturn(double benefit){
+        System.out.println(String.format("총 수익률은 %.2f입니다.",benefit));
     }
 }
 

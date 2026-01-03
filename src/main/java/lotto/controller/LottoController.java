@@ -42,12 +42,7 @@ public class LottoController {
         }
 
         OutputView.printMatch(result.getResult());
-
-
-
-
-
-
+        OutputView.printReturn(result.calculateReturn(amount));
 
     }
 

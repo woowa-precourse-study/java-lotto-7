@@ -24,5 +24,13 @@ public class Result {
         return result;
     }
 
+    public double calculateReturn(int amount){
+        int total=0;
+        for (Status status:Status.values()){
+            total+=result.get(status)* status.getPrice();
+        }
+        return total/amount;
+    }
+
 
 }
